@@ -13,6 +13,15 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// CPL_init_adbc
+void CPL_init_adbc();
+RcppExport SEXP _sf_CPL_init_adbc() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    CPL_init_adbc();
+    return R_NilValue;
+END_RCPP
+}
 // CPL_get_bbox
 Rcpp::NumericVector CPL_get_bbox(Rcpp::List sf, int depth);
 RcppExport SEXP _sf_CPL_get_bbox(SEXP sfSEXP, SEXP depthSEXP) {
@@ -1481,6 +1490,7 @@ RcppExport SEXP _sf_RcppExport_registerCCallable() {
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_sf_CPL_init_adbc", (DL_FUNC) &_sf_CPL_init_adbc, 0},
     {"_sf_CPL_get_bbox", (DL_FUNC) &_sf_CPL_get_bbox, 2},
     {"_sf_CPL_gdal_init", (DL_FUNC) &_sf_CPL_gdal_init, 0},
     {"_sf_CPL_gdal_cleanup_all", (DL_FUNC) &_sf_CPL_gdal_cleanup_all, 0},
